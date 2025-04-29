@@ -24,9 +24,10 @@ public class MainUIController : MonoBehaviour
     private bool miniGameEnded = false; 
   
     public Button buttonAttention;
+    public GameObject background;
 
     public GameObject mainCamera;
-    public GameObject mainCanvas;
+    //public GameObject mainCanvas;
     public EventSystem mainEvent;
 
     public Camera miniGameCamera;
@@ -69,6 +70,7 @@ public class MainUIController : MonoBehaviour
         if (timer >= gameStartTime && !miniGameStarted)
         {
             miniGameStarted = true; 
+            background.SetActive(true);
             StartMiniGame();
         }
         if (timer >= gameEndedTime && !miniGameEnded)
@@ -87,7 +89,7 @@ public class MainUIController : MonoBehaviour
         startButton.interactable = false;
         applicationStart = true;
         startBtnCanvas.gameObject.SetActive(false);
-        Debug.Log("timer activated");
+        Debug.Log("app started, timer activated");
     }
 
     void StartAttention()
@@ -100,18 +102,18 @@ public class MainUIController : MonoBehaviour
     {
            
         Debug.Log("Starting Mini-Game Scene...");
-        mainEvent.gameObject.SetActive(false);
-        //mainListener ???
+         mainEvent.gameObject.SetActive(false);
+        
         SceneManager.LoadScene("MiniGame1", LoadSceneMode.Additive);
         StartCoroutine(AssignMiniGameAudioListenerandEvent());
 
         mainCamera.gameObject.SetActive(false);
-        mainCanvas.gameObject.SetActive(false);
+        //mainCanvas.gameObject.SetActive(false);
     }
 
     private IEnumerator AssignMiniGameAudioListenerandEvent()
     {
-        Debug.Log("async assigminigamelistenerandEvent...");
+        //Debug.Log("async assigminigamelistenerandEvent...");
 
         while (!SceneManager.GetSceneByName("MiniGame1").isLoaded)
         {
@@ -125,7 +127,7 @@ public class MainUIController : MonoBehaviour
         {
             miniGameAudioListener.gameObject.SetActive(true);
             miniGameEvent.gameObject.SetActive(true);
-            Debug.Log("Mini-Game Audio Listener and Event assigned and active.");
+            //Debug.Log("Mini-Game Audio Listener and Event assigned and active.");
         }
     }
 
@@ -133,9 +135,10 @@ public class MainUIController : MonoBehaviour
     void EndMiniGame()
     {
         
-        Debug.Log("endin minigame...");
+        Debug.Log("Ending Mini-Game Scene...");
+        background.SetActive(false);
         mainCamera.gameObject.SetActive(true);
-        mainCanvas.gameObject.SetActive(true);
+        //mainCanvas.gameObject.SetActive(true);
         StartCoroutine(UnloadMiniGameSceneAsync());
         miniGameAudioListener.gameObject.SetActive(false);
         miniGameEvent.gameObject.SetActive(false);
@@ -146,13 +149,13 @@ public class MainUIController : MonoBehaviour
 
     private IEnumerator UnloadMiniGameSceneAsync()
     {
-        Debug.Log("async unloadminigame...");
+        //Debug.Log("async unloadminigame...");
         AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("MiniGame1");
         while(!unloadOperation.isDone)
         {
             yield return null;
         }
-        Debug.Log("Mini-Game Scene has been unloaded.");
+        //Debug.Log("Mini-Game Scene has been unloaded.");
     }
 
     void EndApplication()
