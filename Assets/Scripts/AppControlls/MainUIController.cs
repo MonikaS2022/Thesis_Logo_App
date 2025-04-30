@@ -67,10 +67,15 @@ public class MainUIController : MonoBehaviour
             buttonAttention.GetComponent<Image>().color = new Color(Random.value, Random.value, Random.value);
         }
 
+        if (timer >= gameStartTime-0.1f && !miniGameStarted)
+        {
+            background.SetActive(true);
+            
+        }
         if (timer >= gameStartTime && !miniGameStarted)
         {
-            miniGameStarted = true; 
-            background.SetActive(true);
+            miniGameStarted = true;
+            //background.SetActive(true);
             StartMiniGame();
         }
         if (timer >= gameEndedTime && !miniGameEnded)
