@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My Unity WebGL App</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <style>
+      html, body { margin: 0; padding: 0; height: 100%; background: #000; overflow: hidden; }
+      #unity-container { width: 100%; height: 100%; position: fixed; top: 0; left: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas"></canvas>
+    </div>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/speechAppWEBGL.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/speechAppWEBGL.data",
+        frameworkUrl: buildUrl + "/speechAppWEBGL.framework.js",
+        codeUrl: buildUrl + "/speechAppWEBGL.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "YourCompany",
+        productName: "YourApp",
+        productVersion: "1.0",
+      };
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(document.querySelector("#unity-canvas"), config);
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

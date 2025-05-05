@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 9172358750717677070}
+  isActive: 0
 --- !u!114 &8282278147394730297
 MonoBehaviour:
   m_ObjectHideFlags: 0

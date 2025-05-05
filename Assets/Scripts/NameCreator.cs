@@ -29,6 +29,7 @@ public class NameCreator : MonoBehaviour
 
     public void ChangeExerciseName(string exerciseName)
     {
-        text.text = exerciseName.ToLower();
+        text.text = exerciseName[0] + exerciseName.Substring(1).ToLower();
+        //text.text = exerciseName.ToLower();
     }
 }

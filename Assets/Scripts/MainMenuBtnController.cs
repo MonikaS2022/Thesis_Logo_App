@@ -24,11 +24,13 @@ public class MainMenuBtnController : MonoBehaviour
     {
         if (isActive)
         {
-            text.color = Color.red;
+            text.color = new Color(0.4901961f * 0.8f, 0.5960785f * 0.8f, 0.4745098f * 0.8f);
+            text.fontStyle = FontStyles.Bold;
         }
         else
         {
             text.color = Color.black;
+            text.fontStyle = FontStyles.Normal;
         }
     }
 }

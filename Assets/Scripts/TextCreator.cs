@@ -35,7 +35,7 @@ public class TextCreator: MonoBehaviour
     {
         if (isActive)
         {
-            text.color = Color.red;
+            text.color = Color.black;
         }
         else
         {
