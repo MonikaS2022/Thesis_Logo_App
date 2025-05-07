@@ -1,20 +1,21 @@
 ﻿{
   "entries": [
     {
-      "textName": "BELDŽIAM Į DURIS:\n<b>-TUK TUK.</b>",
-      "imageName": "d1e2p1"
+      "textName": "MONIKA PAMATĖ OBELĮ\nIR DAUG OBUOLIŲ.\nOBELIS SAKO:\n<b>- PADĖK MAN.</b>",
+      "imageName": "d1e4p1"
     },
     {
-      "textName": "KAMUOLYS SOKINEJA\n<b>-OPA OPA.</b>",
-      "imageName": "d1e2p2"
+      "textName": "<b>MONIKA</b> NUKRATĖ\nOBUOLIUS",
+      "imageName": "d1e4p2"
     },
     {
-      "textName": "SALIUTAS SPROGO:\n<b>-BUM BUM.</b>",
-      "imageName": "d1e2p3"
+      "textName": "MONIKA PAMATĖ GĖLĘ.\nGĖLĖ SAKO:\n<b>- PADĖK MAN.\nMONIKA</b> PALAISTĖ GĖLĘ",
+      "imageName": "d1e4p3"
     },
     {
-      "textName": "VAIKAS VALGO:\n<b>-NIAM NIAM.</b>",
-      "imageName": "d1e2p4"
+      "textName": "<b>MAMA</b> SAKO:\n- <b>TU</b> LABAI <b>PUIKI</b>\nMERGAITĖ.",
+      "imageName": "d1e4p4"
     }
   ]
 }
+

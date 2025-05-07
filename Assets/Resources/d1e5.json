@@ -1,20 +1,23 @@
 ﻿{
   "entries": [
     {
-      "textName": "BELDŽIAM Į DURIS:\n<b>-TUK TUK.</b>",
-      "imageName": "d1e2p1"
+      "textName": "OJOJOJ! <b>MAN</b> SKAUDA\nKOJĄ.\n<b>PO-PA.</b>",
+      "imageName": "d1e5p1"
     },
     {
-      "textName": "KAMUOLYS SOKINEJA\n<b>-OPA OPA.</b>",
-      "imageName": "d1e2p2"
+      "textName": "OJOJOJ! <b>MAN</b> SKAUDA\nGALVĄ.\n<b>PO-PA.</b>",
+      "imageName": "d1e5p2"
     },
     {
-      "textName": "SALIUTAS SPROGO:\n<b>-BUM BUM.</b>",
-      "imageName": "d1e2p3"
+      "textName": "OJOJOJ! <b>MAN</b> SKAUDA\nPIRŠTĄ.\n<b>PO-PA.</b>",
+      "imageName": "d1e5p3"
     },
     {
-      "textName": "VAIKAS VALGO:\n<b>-NIAM NIAM.</b>",
-      "imageName": "d1e2p4"
+      "textName": "OJOJOJ! <b>MAN</b> SKAUDA\nDANTĮ\n<b>PO-PA.</b>",
+      "imageName": "d1e5p4"
     }
+    
+
+
   ]
 }

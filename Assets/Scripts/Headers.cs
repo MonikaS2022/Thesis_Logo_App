@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Headers : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI text;
+    [SerializeField]
+    private Image btnImage;
     [SerializeField]
     private string id;
 
@@ -19,14 +22,10 @@ public class Headers : MonoBehaviour
     private void OnEnable()
     {
        OnSetActiveRequest += SetActive;
-
     }
     private void OnDisable()
     {
-   
         OnSetActiveRequest -= SetActive;
-
-
     }
    
 
@@ -44,11 +43,15 @@ public class Headers : MonoBehaviour
         {
             text.color = new Color(0.4901961f * 0.8f, 0.5960785f * 0.8f, 0.4745098f * 0.8f);
             text.fontStyle = FontStyles.Bold;
+            btnImage.color = new Color(0.6419708f / 0.8f, 0.745283f / 0.8f, 0.5870861f / 0.8f); ;
+
+
         }
         else
         {
             text.color = Color.black;
             text.fontStyle = FontStyles.Normal;
+            btnImage.color = Color.white;
         }
     }
 }

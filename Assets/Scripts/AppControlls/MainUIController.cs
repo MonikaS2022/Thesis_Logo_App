@@ -76,12 +76,12 @@ public class MainUIController : MonoBehaviour
         {
             miniGameStarted = true;
             //background.SetActive(true);
-            StartMiniGame();
+            StartMiniGame("MiniGame1");
         }
         if (timer >= gameEndedTime && !miniGameEnded)
         {
             miniGameEnded = true;
-            EndMiniGame();
+            EndMiniGame("MiniGame1");
         }
 
         
@@ -103,13 +103,13 @@ public class MainUIController : MonoBehaviour
         buttonAttention.GetComponent<Image>().color = Color.yellow;
     }
 
-    void StartMiniGame()
+    void StartMiniGame(string miniGameName)
     {
            
         Debug.Log("Starting Mini-Game Scene...");
          mainEvent.gameObject.SetActive(false);
         
-        SceneManager.LoadScene("MiniGame1", LoadSceneMode.Additive);
+        SceneManager.LoadScene(miniGameName, LoadSceneMode.Additive);
         StartCoroutine(AssignMiniGameAudioListenerandEvent());
 
         mainCamera.gameObject.SetActive(false);
@@ -137,14 +137,14 @@ public class MainUIController : MonoBehaviour
     }
 
 
-    void EndMiniGame()
+    void EndMiniGame(string miniGameName)
     {
         
         Debug.Log("Ending Mini-Game Scene...");
         background.SetActive(false);
         mainCamera.gameObject.SetActive(true);
         //mainCanvas.gameObject.SetActive(true);
-        StartCoroutine(UnloadMiniGameSceneAsync());
+        StartCoroutine(UnloadMiniGameSceneAsync(miniGameName));
         miniGameAudioListener.gameObject.SetActive(false);
         miniGameEvent.gameObject.SetActive(false);
         mainEvent.gameObject.SetActive(true);
@@ -152,10 +152,10 @@ public class MainUIController : MonoBehaviour
 
     }
 
-    private IEnumerator UnloadMiniGameSceneAsync()
+    private IEnumerator UnloadMiniGameSceneAsync(string miniGameName)
     {
         //Debug.Log("async unloadminigame...");
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("MiniGame1");
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(miniGameName);
         while(!unloadOperation.isDone)
         {
             yield return null;
