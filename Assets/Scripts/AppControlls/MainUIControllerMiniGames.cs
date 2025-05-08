@@ -14,15 +14,20 @@ public class MainUIControllerMiniGames : MonoBehaviour
     public Button startExercButton;
     public GameObject startExcerBtnCanvas;
     public Button startMiniGameBtn;
+    public Button stopExerBtn;
 
-    public string[] miniGameScenes= new string[3] { "MiniGame1", "MiniGame2", "MiniGame3" };
+    //public string[] miniGameScenes= new string[3] { "MiniGame1", "MiniGame2", "MiniGame3" };
+    public string[] miniGameScenes= new string[1] { "MiniGame1"};
     int sceneToLoad = 0;
     public bool wasLastMiniGame = false;
 
     public bool isExercTimerActive = false;
-    public float exerciseTimerCountdown = 7f;
-    public float resetExerciseTimerCountdown = 7f;
-    
+    public float exerciseTimerCountdown = 10f;
+    public float resetExerciseTimerCountdown = 10f;
+
+    public bool isAttentionActive = false;
+    public float timeFoAttention = 5f;
+
     public bool applicationStart = false;
 
     public GameObject background;
@@ -33,6 +38,9 @@ public class MainUIControllerMiniGames : MonoBehaviour
     public Camera miniGameCamera;
     public EventSystem miniGameEvent;
     public AudioListener miniGameAudioListener;
+
+    public Button fillButton;          
+    public Image fillButtonImage;           
 
     public static event Action OnEndMiniGame;
     public static void RaiseEndMiniGame()=>OnEndMiniGame?.Invoke();
@@ -51,10 +59,15 @@ public class MainUIControllerMiniGames : MonoBehaviour
         OnEndMiniGame -= EndMiniGame;
     }
 
+   
     void Update()
     {
         //CheckingTimer();
-
+        if(!isAttentionActive && exerciseTimerCountdown < timeFoAttention )
+        {
+            isAttentionActive = true;
+            StartAttention();
+        }
 
         if (isExercTimerActive)
        {
@@ -77,6 +90,8 @@ public class MainUIControllerMiniGames : MonoBehaviour
                 EndExercise();
             }
        }
+
+       
     }
 
     void StartTimer()
@@ -87,6 +102,7 @@ public class MainUIControllerMiniGames : MonoBehaviour
         
         isExercTimerActive = true;
         applicationStart = true;
+        isAttentionActive = false;
     }
 
     void StartMiniGame()
@@ -154,12 +170,43 @@ public class MainUIControllerMiniGames : MonoBehaviour
 
     void EndExercise()
     {
-        string buttonText = "END";
-        startExcerBtnCanvas.GetComponentInChildren<TextMeshProUGUI>().text = buttonText;
-
-        startExcerBtnCanvas.gameObject.SetActive(true);
+        stopExerBtn.gameObject.SetActive(true);
     }
 
+
+    void StartAttention()
+    {
+        fillButtonImage.type = Image.Type.Filled;
+        fillButtonImage.fillMethod = Image.FillMethod.Vertical;
+        fillButtonImage.fillAmount = 0f;  // Start with no fill
+        fillButtonImage.color = Color.green;
+
+        // Start the filling effect
+        StartCoroutine(FillButton(timeFoAttention));
+    }
+
+    IEnumerator FillButton(float fillDuration)
+    {
+        float timeElapsed = 0f;
+
+        while (timeElapsed < fillDuration)
+        {
+            // Calculate the fill amount based on the time elapsed
+            float fillAmount = timeElapsed / fillDuration;
+            fillButtonImage.fillAmount = fillAmount;
+
+            // Gradually change color from green to red based on fill progress
+            fillButtonImage.color = Color.Lerp(Color.grey, Color.green, fillAmount);
+
+            // Wait for the next frame
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the button is fully filled and red at the end
+        fillButtonImage.fillAmount = 1f;
+        fillButtonImage.color = Color.grey;
+    }
 
     void CheckingTimer()
     {
