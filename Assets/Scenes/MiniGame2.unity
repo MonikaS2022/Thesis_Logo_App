@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMiniGameTimerActive: 1
-  miniGameTimerCountdown: 3
+  miniGameTimerCountdown: 20
   stopMiniGameBtn: {fileID: 970546888}
   fallingfruitsStop: {fileID: 165505622}
   basketStop: {fileID: 1181600997}
